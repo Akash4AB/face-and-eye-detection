@@ -75,6 +75,7 @@ def main():
 
             cap = cv2.VideoCapture("uploaded_video.mp4")
             stframe = st.empty()
+            frame_count = 0
             while cap.isOpened():
                 ret, frame = cap.read()
                 if not ret:
@@ -84,6 +85,7 @@ def main():
                     frame = detect_faces_eyes(frame)
 
                 stframe.image(frame, channels="BGR")
+                frame_count += 1
             cap.release()
 
     st.sidebar.info("Use 'Start Webcam' to begin webcam feed and 'Stop Webcam' to end it.")
